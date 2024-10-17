@@ -23,18 +23,7 @@ and all that type shit {% endcomment %}
     
     {% comment %} <div class="w3-bar w3-black w3-hide-small"> {% endcomment %}
   
-      {% if user.is_authenticated %}
-      Hi {{ user.username }}! You are logged in.
-      <form action="{% url 'logout' %}" method="post">
-          {% csrf_token %}
-          <button type="submit">Log Out</button>
-      </form>
       
-      {% else %}
-      <p>You are not logged in</p>
-      <a href="{% url 'login' %}">Log In</a> |
-      <a href="{% url 'signup' %}">Sign Up</a>
-      {% endif %}
       
     {% comment %} </div>  {% endcomment %}
 
@@ -50,30 +39,22 @@ and all that type shit {% endcomment %}
         </header>
     </div>
 
-    <!-- Posts -->
+    <!-- 
     <div class="w3-white w3-margin">
         <div class="w3-container w3-padding w3-black">
           <h4>Our Tutors</h4>
         </div>
-        
-        <!--row start-->
+  
         <div class="row">
-            <!--col 1-->
 
-                <!-- django list thing here for tutors-->
-        
         </div>
     </div>
-
+    -->
+    
+    <!-- list users here -->
+    
 </body>
 
 {% endblock content %}
+</html>
 
-{% comment %} </html><!-- tutors -->
-<div class="tutor-listing">
-    <div class="tutor-subheading">
-      <h4>Our Tutors</h4>
-    </div>
-
-    
-</div> {% endcomment %}

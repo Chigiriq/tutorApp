@@ -1,6 +1,7 @@
 # accounts/forms.py
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from .models import CustomUser
+from django import forms
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta(UserCreationForm):
@@ -24,3 +25,14 @@ class CustomUserChangeForm(UserChangeForm):
             "classes",
             "hours",
         )
+
+class UpdateHoursForm(forms.ModelForm):
+    class Meta:
+        model = CustomUser
+        fields = (
+            "hours",
+        )
+
+        # widgets = {
+        #     'hours': forms.NumberInput(attrs={'min': 0}),
+        # }

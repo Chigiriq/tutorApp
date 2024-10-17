@@ -1,60 +1,148 @@
+
+
 <html>
+  <style>
+    .body {
+        font-family: 'Open Sans', sans-serif; /* Use Open Sans font */
+        background-color: #491212; /* Light background for contrast */
+        padding: 20px;
+    }
+    .user-list {
+        list-style-type: none; /* Remove default list styling */
+        padding: 0;
+    }
+    .user-item {
+        background-color: #fff; /* White background for list items */
+        border: 1px solid #ddd; /* Light border */
+        border-radius: 5px; /* Rounded corners */
+        padding: 15px; /* Spacing inside the item */
+        margin-bottom: 10px; /* Space between items */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        transition: transform 0.2s; /* Animation for hover effect */
+        text-align: center;
+    }
+    .user-item:hover {
+        transform: scale(1.02); /* Slight zoom on hover */
+    }
+    .user-item .fa {
+        color: #4CAF50; /* Green color for icons */
+        margin-right: 8px; /* Space between icon and text */
+    }
+    .user-link {
+        text-decoration: none; /* Remove underline from links */
+        color: #4CAF50; /* Link color */
+    }
+    .user-link:hover {
+        text-decoration: underline; /* Underline on hover */
+    }
+
+    .white-box {
+    background-color: white; /* White background */
+    border: 2px solid #444; /* Border color (you can change it) */
+    border-radius: 5px; /* Rounded corners */
+    padding: 20px; /* Space inside the box */
+    margin: 20px 0; /* Space outside the box */
+    text-align: center; /* Center text if needed */
+    }
+
+</style>
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open Sans">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">  
 </head>
 {% extends "base.html" %}
-{% comment %} note this is temp, will need to make new project for dbs
-and all that type shit {% endcomment %}
+
+<!-- doesnt work i guess -->
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 {% block title %}Home{% endblock title %}
 
 {% block content %}
 
 {% comment %} new stuff here {% endcomment %}
-<body class="w3-light-grey">
-
-    <!-- Navigation bar with social media icons -->
-    
-    {% comment %} <div class="w3-bar w3-black w3-hide-small"> {% endcomment %}
-  
-      
-      
-    {% comment %} </div>  {% endcomment %}
-
-
-    <!-- w3-content defines a container for fixed size centered content, 
-    and is wrapped around the whole page content, except for the footer in this example -->
+<!-- <body class="w3-light-grey"> -->
+<body>
+  <div class = "body">
     <div class="w3-content" style="max-width:1600px">
-
         <!-- Header -->
         <header class="w3-container w3-center w3-padding-48 w3-white">
         <h1 class="w3-xxxlarge"><b>UMT Tutors</b></h1>
-        {% comment %} <h6>Welcome to the blog of <span class="w3-tag">Jane's world</span></h6> {% endcomment %}
         </header>
     </div>
 
-    <!-- 
-    <div class="w3-white w3-margin">
-        <div class="w3-container w3-padding w3-black">
-          <h4>Our Tutors</h4>
-        </div>
-  
-        <div class="row">
+    <!-- how do images work but css doesnt what -->
+    <img src="{% static 'images/computer-science-site-banner.webp' %}" width = 100%>
 
-        </div>
-    </div>
-    -->
-    
     <!-- list users here -->
-    
+    <!-- I have no idea why this does not work, every source i can find including the book
+         describes and demonstrates listing entities like this -->
+
+    <!-- Note: signed in users is rendered but doesnt work for looping? -->
+    <!-- <p><li>{{ user.username }} - {{ user.name }} - {{ user.classes }} - {{ user.hours }}</li></p>      -->
+
+    <!-- <h2>User List</h2>
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }} - {{ user.name }} - {{ user.classes }} - {{ user.hours }}</li>
+            <li>Debug: User is present.</li>
+        {% empty %}
+            <li>No users available.</li>
+        {% endfor %}
+    </ul> -->
+
+    <!-- Forced User List Below -->
+    <!-- <ul>
+      <li>Username: aster - Name: TA 1 - Class: CSCI 232 - Hours: 12 - 2 PM</li>
+      <li>Username: aster2 - Name: TA 2 - Class: CSCI 231 - Hours: 10 - 12 PM</li>
+      <li>Username: aster3 - Name: TA 3 - Class: CSCI 230 - Hours: 1 - 3 PM</li>
+  </ul> -->
+
+  <!-- user list test #2 -->
+  <!-- <ul class="user-list">
+    {% for user in users %}
+        <li class="user-item">
+            <i class="fa fa-user"></i>
+            <a class="user-link" href="{% url 'user_profile' pk=user.pk %}">Username: {{ user.username }}</a> - Name: {{ user.name }} - Class: {{ user.classes }} - Hours: {{ user.hours }}
+        </li>
+    {% empty %}
+        <li>No users available.</li>
+    {% endfor %}
+  </ul> -->
+
+  <br><br>
+
+  <h2 class="w3-center white-box">TA's</h2>
+  <ul class="user-list">
+      <li class="user-item">
+          <i class="fa fa-user"></i>
+          <a class="user-link" href="{% url 'user_profile' pk=2 %}">Username: aster2</a> - Name: TA 2 - Class: CSCI 231 - Hours: 10 - 12 PM
+      </li>
+      <li class="user-item">
+          <i class="fa fa-user"></i>
+          <a class="user-link" href="{% url 'user_profile' pk=3 %}">Username: aster3</a> - Name: TA 3 - Class: CSCI 246 - Hours: 4 - 6 PM
+      </li>
+      <li class="user-item">
+        <i class="fa fa-user"></i>
+        <a class="user-link" href="{% url 'user_profile' pk=4 %}">Username: aster4</a> - Name: TA 4 - Class: CSCI 358 - Hours: 11 AM - 4 PM
+    </li>
+  </ul>
+
+  
+
+
+  
+  </div>
 </body>
 
 {% endblock content %}
+
+
 </html>
+
 

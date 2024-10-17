@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import CreateView
+from django.views.generic import CreateView, DetailView
 from .forms import CustomUserCreationForm, UpdateHoursForm
 from .models import CustomUser
 from django.views.generic.edit import UpdateView
@@ -18,3 +18,16 @@ class UpdateHoursView(UpdateView):
 
     def get_object(self):
         return self.request.user
+    
+def user_list(request):
+    users = CustomUser.objects.all()
+    return render(request, 'user_list.html', {'users': users})
+
+class UserProfileView(DetailView):
+    model = CustomUser
+    template_name = 'registration/user_profile.html'
+    context_object_name = 'user'
+
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(CustomUser, pk=pk)

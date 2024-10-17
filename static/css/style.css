@@ -1,0 +1,22 @@
+/* also haven't been able to get this linked */
+
+body {
+    margin: 40px;
+    background-color: yellow;
+  }
+  
+  .wrapper {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
+  }
+  
+  .box {
+    background-color: #9e1010;
+    color: #ac0f0f;
+    border-radius: 5px;
+    padding: 20px;
+    font-size: 150%;
+  }
